@@ -1,16 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import {DateComponent} from './DateComponent';
-import { TimeColumn } from './TimeColumn';
-
+import { CodeColumn } from './CodeColumn';
+import { MusicColumn } from './MusicColumn';
+import { ExcerciseColumn } from './ExcerciseColumn';
 function App() {
   return (
     <div>
       <>
       <DateComponent />
-      <TimeColumn />
-      <TimeColumn />
-      <TimeColumn />
+      <CodeColumn />
+      <MusicColumn />
+      <ExcerciseColumn />
+  
       </>
       {/* Your main app content goes here */}
     </div>

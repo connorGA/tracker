@@ -25,7 +25,7 @@ const TimeInput = ({ onSubmit }) => {
       );
     };
 
-export const TimeColumn = () => {
+export const MusicColumn = () => {
     const [times, setTimes] = useState([]);
 
     const handleTimeSubmit = (time) => {
@@ -34,10 +34,10 @@ export const TimeColumn = () => {
   
     return (
       <div>
-        <h2>Column</h2>
+        <h2>Music</h2>
         <TimeInput onSubmit={handleTimeSubmit} />
         <div>
-          <strong>Entered Times:</strong>
+          <strong>Hours:</strong>
           <ul>
             {times.map((time, i) => (
               <li key={i}>{time}</li>
