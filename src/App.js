@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {DateComponent} from './DateComponent';
+import Calendar from './Calendar';
 import { CodeColumn } from './CodeColumn';
 import { MusicColumn } from './MusicColumn';
 import { ExcerciseColumn } from './ExcerciseColumn';
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <>
-      <DateComponent />
+      <Calendar />
       <CodeColumn />
       <MusicColumn />
       <ExcerciseColumn />

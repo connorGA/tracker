@@ -1,0 +1,74 @@
+/* Calendar.css */
+
+.calendar-container {
+    margin-top: 0; /* Adjust the top margin as needed */
+    max-height: 40vh; /* Adjust the maximum height as needed, using viewport height unit (vh) */
+    overflow: hidden; /* Hide the overflow to prevent scroll bars */
+  }
+  
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(80px, 1fr)); /* Responsive columns with a minimum width of 80px */
+    gap: 1px;
+    overflow: hidden; /* Hide the overflow to prevent scroll bars */
+  }
+  
+  .calendar-month {
+    border: 1px solid #ccc;
+    padding: 2px; /* Adjusted padding for the month label */
+    text-align: center;
+    height: calc(100% - 4px); /* Set the height to fill the container, accounting for padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Hide the overflow to prevent scroll bars */
+    margin: 1px 0; /* Adjusted margin for the month label */
+    background-size: cover; /* Ensure the background image covers the entire element */
+  }
+  
+  /* Use different URLs for each month's background image */
+  .january { background-image: url('jan.gif'); }
+
+
+   /*  .february { background-image: url('february.gif'); }
+  .march { background-image: url('march.gif'); }
+  .april { background-image: url('april.gif'); }
+  .may { background-image: url('may.gif'); }
+  .june { background-image: url('june.gif'); }
+  .july { background-image: url('july.gif'); }
+  .august { background-image: url('august.gif'); }
+  .september { background-image: url('september.gif'); }
+  .october { background-image: url('october.gif'); }
+  .november { background-image: url('november.gif'); }
+  .december { background-image: url('december.gif'); } */
+  
+  .small-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(10px, 1fr)); /* Display days in a small grid with a minimum width of 10px */
+    gap: 0px;
+    height: calc(100% - 4px); /* Set the height to fill the container, accounting for padding */
+  }
+  
+  .calendar-day {
+    padding: 4px; /* Adjusted padding for the day number */
+    border: 1px solid #ccc;
+    text-align: center;
+    flex-grow: 1;
+    overflow: hidden; /* Hide the overflow to prevent scroll bars */
+    font-size: 6px; /* Set a maximum font size for the day number */
+  }
+  
+  .current-day {
+    background-color: #4caf50; /* Green for the current day */
+    color: #fff;
+  }
+  
+  .past-day {
+    background-color: #8f5cdc; /* Grey for past days */
+    color: rgb(177, 177, 177);
+  }
+  
+  .future-day {
+    background-color: #fff; /* White for future days */
+  }
+  

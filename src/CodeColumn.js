@@ -38,14 +38,14 @@ export const CodeColumn = () => {
   const totalHours = times.reduce((acc, time) => acc + parseFloat(time), 0);
 
   // Total hours you want to reach
-  const targetTotalHours = 730;
+  const targetTotalHours = 730;  //365 days x 2 hours per day
 
   return (
     <div>
       <h2>Code</h2>
       <TimeInput onSubmit={handleTimeSubmit} />
       <div>
-        <strong>Hours:</strong>
+        <strong>Hours: {totalHours}</strong>
         <div
           style={{
             display: 'flex',
