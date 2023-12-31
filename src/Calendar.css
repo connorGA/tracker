@@ -1,74 +1,72 @@
 /* Calendar.css */
 
 .calendar-container {
-    margin-top: 0; /* Adjust the top margin as needed */
-    max-height: 40vh; /* Adjust the maximum height as needed, using viewport height unit (vh) */
-    overflow: hidden; /* Hide the overflow to prevent scroll bars */
-  }
-  
-  .calendar {
+    margin-top: 0;
+    max-height: 40vh;
+    overflow: hidden;
+    background-color:#ffffff; /* Default background color */
+}
+
+.calendar {
     display: grid;
-    grid-template-columns: repeat(12, minmax(80px, 1fr)); /* Responsive columns with a minimum width of 80px */
+    grid-template-columns: repeat(12, minmax(80px, 1fr));
     gap: 1px;
-    overflow: hidden; /* Hide the overflow to prevent scroll bars */
-  }
-  
-  .calendar-month {
+    overflow: hidden;
+}
+
+.calendar-month {
     border: 1px solid #ccc;
-    padding: 2px; /* Adjusted padding for the month label */
+    padding: 2px;
     text-align: center;
-    height: calc(100% - 4px); /* Set the height to fill the container, accounting for padding */
+    height: calc(100% - 4px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden; /* Hide the overflow to prevent scroll bars */
-    margin: 1px 0; /* Adjusted margin for the month label */
-    background-size: cover; /* Ensure the background image covers the entire element */
-  }
-  
-  /* Use different URLs for each month's background image */
-  .january { background-image: url('jan.gif'); }
+    overflow: hidden;
+    margin: 1px 0;
+    background-size: cover;
+}
+
+.january { background-color: #4caf50; } /* Green for January */
+.february { background-color: #2196f3; } /* Blue for February */
+.march { background-color: #ff5722; } 
+.april { background-color: #ff5722; } 
+.may { background-color: #ff5722; } 
+.june { background-color: #ff5722; } 
+.july { background-color: #ff5722; } 
+.august { background-color: #ff5722; } 
+.september { background-color: #ff5722; } 
+.october { background-color: #ff5722; } 
+.november { background-color: #ff5722; } 
+.december { background-color: #ff5722; } 
 
 
-   /*  .february { background-image: url('february.gif'); }
-  .march { background-image: url('march.gif'); }
-  .april { background-image: url('april.gif'); }
-  .may { background-image: url('may.gif'); }
-  .june { background-image: url('june.gif'); }
-  .july { background-image: url('july.gif'); }
-  .august { background-image: url('august.gif'); }
-  .september { background-image: url('september.gif'); }
-  .october { background-image: url('october.gif'); }
-  .november { background-image: url('november.gif'); }
-  .december { background-image: url('december.gif'); } */
-  
-  .small-calendar {
+.small-calendar {
     display: grid;
-    grid-template-columns: repeat(7, minmax(10px, 1fr)); /* Display days in a small grid with a minimum width of 10px */
+    grid-template-columns: repeat(7, minmax(10px, 1fr));
     gap: 0px;
-    height: calc(100% - 4px); /* Set the height to fill the container, accounting for padding */
-  }
-  
-  .calendar-day {
-    padding: 4px; /* Adjusted padding for the day number */
+    height: calc(100% - 4px);
+}
+
+.calendar-day {
+    padding: 4px;
     border: 1px solid #ccc;
     text-align: center;
     flex-grow: 1;
-    overflow: hidden; /* Hide the overflow to prevent scroll bars */
-    font-size: 6px; /* Set a maximum font size for the day number */
-  }
-  
-  .current-day {
-    background-color: #4caf50; /* Green for the current day */
+    overflow: hidden;
+    font-size: 6px;
+}
+
+.current-day {
+    background-color: #4caf50;
     color: #fff;
-  }
-  
-  .past-day {
-    background-color: #8f5cdc; /* Grey for past days */
+}
+
+.past-day {
+    background-color: #8f5cdc;
     color: rgb(177, 177, 177);
-  }
-  
-  .future-day {
-    background-color: #fff; /* White for future days */
-  }
-  
+}
+
+.future-day {
+    background-color: #fff;
+}

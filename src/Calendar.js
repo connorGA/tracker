@@ -63,7 +63,7 @@ const Calendar = () => {
       );
 
       calendar.push(
-        <div key={startOfMonth.toString()} className="calendar-month">
+        <div key={startOfMonth.toString()} className={`calendar-month ${monthLabel.toLowerCase()}`}>
           <h5>{monthLabel}</h5>
           {smallCalendar}
         </div>
@@ -83,3 +83,4 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
