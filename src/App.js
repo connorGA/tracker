@@ -1,21 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import Calendar from './Calendar';
-import { CodeColumn } from './CodeColumn';
-import { MusicColumn } from './MusicColumn';
-import { ExcerciseColumn } from './ExcerciseColumn';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import Calendar from './Calendar';
+import { CreateForm } from './CreateForm';
+// import { CodeColumn } from './CodeColumn';
+// import { MusicColumn } from './MusicColumn';
+// import { ExcerciseColumn } from './ExcerciseColumn';
+import { Dashboard } from './Dashboard';
 function App() {
   return (
-    <div>
-      <>
-      <Calendar />
-      <CodeColumn />
-      <MusicColumn />
-      <ExcerciseColumn />
-  
-      </>
-      {/* Your main app content goes here */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' Component={Dashboard} />
+        <Route path='/create' Component={CreateForm} />
+      </Routes>
+    </Router>
   );
 };
 
