@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Calendar } from './Calendar';
-import { CreateForm } from './CreateForm'; 
-
+import { CreateForm } from './CreateForm';
 import { Column } from './Column';
+import {TestComponent } from './TestComponent';
 
 export const Dashboard = () => {
   const [itemData, setItemData] = useState(null);
@@ -18,14 +18,13 @@ export const Dashboard = () => {
       <Calendar />
       <h2>Dashboard</h2>
       <Routes>
-        <Route
-          path="/"
-          element={<Column itemData={itemData} />}
-        />
-        <Route
-          path="/create"
-          element={<CreateForm onItemCreate={handleItemCreate} />}
-        />
+        <Route index element={<Column itemData={itemData} />} />
+        <Route path="/test" element={<TestComponent testProp="Hello" />} />
+
+        {/* <Route path="create" element={<CreateForm onItemCreate={handleItemCreate} />} /> */}
+        <Route path="create" element={<CreateForm onItemCreate={() => console.log('Test')} />} />
+
+        {/* other internal routes */}
       </Routes>
     </div>
   );

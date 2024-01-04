@@ -11,8 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' Component={Dashboard} />
-        <Route path='/create' Component={CreateForm} />
+        <Route path="*" element={<Dashboard />} />
       </Routes>
     </Router>
   );
