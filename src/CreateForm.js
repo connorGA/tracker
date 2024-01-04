@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const CreateForm = ({ onItemCreate }) => {
-  console.log('onItemCreate type:', typeof onItemCreate); // Should log 'function'
-  
   const navigate = useNavigate();
 
   const [itemName, setItemName] = useState('');
@@ -24,23 +22,13 @@ export const CreateForm = ({ onItemCreate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted!");
-    console.log("onItemCreate:", onItemCreate);
-    console.log("itemName:", itemName);
-    console.log("measurementType:", measurementType);
-    console.log("totalHours:", totalHours);
-    // Example: Handle the form submission logic (e.g., save to database)
-
-    // Call the provided callback with the form data
     onItemCreate({
       itemName: itemName,
       measurementType: measurementType,
       totalHours: totalHours,
-      // Add other necessary data, if any
     });
 
-    // Redirect to the dashboard after submission
-    navigate('/');
+    navigate('/'); // Redirect to the dashboard after submission
   };
 
   return (

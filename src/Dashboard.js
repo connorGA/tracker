@@ -4,13 +4,13 @@ import { Routes, Route } from 'react-router-dom';
 import { Calendar } from './Calendar';
 import { CreateForm } from './CreateForm';
 import { Column } from './Column';
-import {TestComponent } from './TestComponent';
+import { TestComponent } from './TestComponent';
 
 export const Dashboard = () => {
   const [itemData, setItemData] = useState(null);
 
   const handleItemCreate = (data) => {
-    setItemData({ itemName: data.itemName, times: [] });
+    setItemData(data);
   };
 
   return (
@@ -19,14 +19,12 @@ export const Dashboard = () => {
       <h2>Dashboard</h2>
       <Routes>
         <Route index element={<Column itemData={itemData} />} />
+        <Route path="/create" element={<CreateForm onItemCreate={handleItemCreate} />} />
         <Route path="/test" element={<TestComponent testProp="Hello" />} />
-
-        {/* <Route path="create" element={<CreateForm onItemCreate={handleItemCreate} />} /> */}
-        <Route path="create" element={<CreateForm onItemCreate={() => console.log('Test')} />} />
-
         {/* other internal routes */}
       </Routes>
     </div>
   );
 };
+
 
