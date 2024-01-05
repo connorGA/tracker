@@ -1,6 +1,5 @@
-// Dashboard.js
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom'; // Import Link
 import { Calendar } from './Calendar';
 import { CreateForm } from './CreateForm';
 import { Column } from './Column';
@@ -17,6 +16,12 @@ export const Dashboard = () => {
     <div>
       <Calendar />
       <h2>Dashboard</h2>
+
+      {/* Add a Link styled as a button */}
+      <Link to="/create" style={{ textDecoration: 'none' }}>
+        <button style={{ margin: '10px', padding: '10px' }}>Create New Item</button>
+      </Link>
+
       <Routes>
         <Route index element={<Column itemData={itemData} />} />
         <Route path="/create" element={<CreateForm onItemCreate={handleItemCreate} />} />
@@ -26,5 +31,4 @@ export const Dashboard = () => {
     </div>
   );
 };
-
 

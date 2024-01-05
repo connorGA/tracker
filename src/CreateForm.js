@@ -24,8 +24,8 @@ export const CreateForm = ({ onItemCreate }) => {
     e.preventDefault();
     onItemCreate({
       itemName: itemName,
-      measurementType: measurementType,
-      totalHours: totalHours,
+      // measurementType: measurementType,
+      times: Array(30).fill(0).map(() => parseFloat(totalHours)), // Example: creates an array of 30 days with the same hours logged
     });
 
     navigate('/'); // Redirect to the dashboard after submission
