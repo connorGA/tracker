@@ -1,4 +1,3 @@
-// CreateForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,15 +5,12 @@ export const CreateForm = ({ onItemCreate }) => {
   const navigate = useNavigate();
 
   const [itemName, setItemName] = useState('');
-  const [measurementType, setMeasurementType] = useState('yesNo');
   const [totalHours, setTotalHours] = useState(0);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'itemName') {
       setItemName(value);
-    } else if (name === 'measurementType') {
-      setMeasurementType(value);
     } else if (name === 'totalHours') {
       setTotalHours(value);
     }
@@ -24,7 +20,6 @@ export const CreateForm = ({ onItemCreate }) => {
     e.preventDefault();
     onItemCreate({
       itemName: itemName,
-      // measurementType: measurementType,
       times: Array(30).fill(0).map(() => parseFloat(totalHours)), // Example: creates an array of 30 days with the same hours logged
     });
 
@@ -46,19 +41,6 @@ export const CreateForm = ({ onItemCreate }) => {
         </label>
 
         <label>
-          Measurement Type:
-          <select
-            name="measurementType"
-            value={measurementType}
-            onChange={handleInputChange}
-          >
-            <option value="yesNo">Yes/No</option>
-            <option value="time">Time</option>
-            {/* Add more options as needed */}
-          </select>
-        </label>
-
-        <label>
           Total Hours:
           <input
             type="number"
@@ -73,4 +55,3 @@ export const CreateForm = ({ onItemCreate }) => {
     </div>
   );
 };
-
