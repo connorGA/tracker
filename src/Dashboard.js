@@ -4,6 +4,7 @@ import { Calendar } from './Calendar';
 import { CreateForm } from './CreateForm';
 import { Column } from './Column';
 import { TestComponent } from './TestComponent';
+import './Dashboard.css'
 
 export const Dashboard = () => {
   const [itemData, setItemData] = useState(null);
@@ -13,13 +14,13 @@ export const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard'>
       <Calendar />
       
 
       {/* Add a Link styled as a button */}
       <Link to="/create" style={{ textDecoration: 'none' }}>
-        <button style={{ margin: '10px', padding: '10px' }}>Create New Item</button>
+        <button className='create-button'>Create New Item</button>
       </Link>
 
       <Routes>

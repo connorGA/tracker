@@ -2,9 +2,10 @@
 
 .calendar-container {
     margin-top: 0;
+    margin-bottom: 0;
     max-height: 40vh;
     overflow: hidden;
-    background-color:#ffffff; /* Default background color */
+    background-color:#000000; /* Default background color */
 }
 
 .calendar {
@@ -18,7 +19,7 @@
     border: 0.1px solid #000000;
     padding: 0px;
     text-align: center;
-    height: calc(100% - 4px);
+    height: calc(100% - 1px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
