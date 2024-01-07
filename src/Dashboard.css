@@ -1,6 +1,7 @@
 .dashboard {
-    background-color: rgb(173, 108, 108);
+    background-color: rgb(19, 21, 32);
     margin-top: 0px;
+    height: 100vh;
 }
 
 .create-button {

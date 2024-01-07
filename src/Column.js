@@ -1,4 +1,5 @@
 import React from 'react';
+import './Column.css'; // Make sure the path to your CSS file is correct
 
 export const Column = ({ itemData }) => {
   const goalHours = 2; // Define your goal hours
@@ -19,12 +20,15 @@ export const Column = ({ itemData }) => {
   // Initialize an array for the year with null values
   const timesArray = itemData && itemData.times ? itemData.times : Array(daysInYear).fill(null);
 
-  // Determine the color for each day
-  const getDayColor = (dayIndex, hours) => {
+  // Determine the class for each day
+  const getDayClass = (dayIndex, hours) => {
     if (dayIndex + 1 > currentDayOfYear) {
-      return 'darkgrey'; // Future day
+      return 'day day-future'; // Future day
     }
-    return hours > 0 ? (hours >= goalHours ? 'green' : 'lightgreen') : 'darkgrey'; // Past day with or without logged hours
+    if (hours > 0) {
+      return hours >= goalHours ? 'day day-current-green' : 'day day-current-lightgreen';
+    }
+    return 'day day-past'; // Past day without logged hours
   };
 
   // Generate the days for each month
@@ -43,34 +47,27 @@ export const Column = ({ itemData }) => {
   };
 
   return (
-    <div>
-      <h2>{itemData ? `${itemData.itemName}` : 'No Item Created'}</h2>
-      <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-        {daysInMonths.map((_, monthIndex) => (
-          <div key={monthIndex} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '1' }}>
-            <span style={{ marginBottom: '5px' }}>{new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}</span>
-            {generateWeeks(generateDays(monthIndex)).map((week, weekIndex) => (
-              <div key={weekIndex} style={{ display: 'flex', gap: '2px', marginBottom: '5px' }}>
-                {week.map((hours, dayIndex) => {
-                  const dayOfYear = daysInMonths.slice(0, monthIndex).reduce((a, b) => a + b, 0) + weekIndex * 7 + dayIndex;
-                  return (
-                    <div
-                      key={dayIndex}
-                      style={{
-                        width: '10px',
-                        height: '10px',
-                        borderRadius: '50%',
-                        backgroundColor: getDayColor(dayOfYear, hours),
-                      }}
-                      title={`Day ${dayIndex + 1} of Week ${weekIndex + 1} in ${new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}: ${hours || 0} hours`}
-                    />
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+    <div className="column-container">
+      <h2>{itemData ? `${itemData.itemName}` : ''}</h2>
+      {daysInMonths.map((_, monthIndex) => (
+        <div key={monthIndex} className="month-container">
+          <span className="month-label">{new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}</span>
+          {generateWeeks(generateDays(monthIndex)).map((week, weekIndex) => (
+            <div key={weekIndex} className="week-container">
+              {week.map((hours, dayIndex) => {
+                const dayOfYear = daysInMonths.slice(0, monthIndex).reduce((a, b) => a + b, 0) + weekIndex * 7 + dayIndex;
+                return (
+                  <div
+                    key={dayIndex}
+                    className={getDayClass(dayOfYear, hours)}
+                    title={`Day ${dayIndex + 1} of Week ${weekIndex + 1} in ${new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}: ${hours || 0} hours`}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,0 +1,56 @@
+.column-container {
+    display: flex;
+    width: 1; /* Adjust width to be less than 100% */
+    justify-content: space-between;
+    background-color: rgb(19, 21, 32); /* Dark background color */
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3), /* Top shadow */
+                0 5px 10px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 15px; /* Rounded corners */
+    margin: 20px 20px; /* Margin around the container */
+  }  
+  
+.month-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.month-label {
+  margin-bottom: 10px;
+  color: #fff; /* Light color for text to contrast with the dark background */
+}
+
+.week-container {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 5px;
+}
+
+.day {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+  
+  /* Rest of your day-related styles... */
+  
+  
+  .day-past {
+    background-color: darkgrey;
+  }
+  
+  .day-future {
+    background-color: darkgrey;
+  }
+  
+  .day-current-green {
+    background-color: green;
+  }
+  
+  .day-current-lightgreen {
+    background-color: lightgreen;
+  }
+  
