@@ -10,35 +10,59 @@
 .calendar {
     display: grid;
     grid-template-columns: repeat(12, minmax(80px, 1fr));
-    gap: 1px;
+    gap: 0px;
     overflow: hidden;
 }
 
 .calendar-month {
-    border: 1px solid #ccc;
-    padding: 2px;
+    border: 0.1px solid #000000;
+    padding: 0px;
     text-align: center;
     height: calc(100% - 4px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    margin: 1px 0;
+    margin: 0px 0px;
     background-size: cover;
 }
 
-.january { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/jan.gif'); } /* Green for January */
-.february { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/Feb.gif'); } /* Blue for February */
-.march { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/march.gif'); } 
-.april { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/april.gif'); } 
-.may { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/may.gif'); }  
-.june { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/june.gif'); }  
-.july { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/july.gif'); }  
-.august { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/august.gif'); }  
-.september { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/september.gif'); }  
-.october { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/october.gif'); }  
-.november { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/november.gif'); }  
-.december { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/december.gif'); }  
+.january { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/jan.gif');
+            color: rgb(255, 255, 255); 
+         } 
+.february { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/Feb.gif'); 
+    color: rgb(255, 255, 255);
+          } 
+.march { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/march.gif'); 
+    color: rgb(255, 255, 255);
+        } 
+.april { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/april.gif'); 
+         color: rgb(255, 255, 255);
+        } 
+.may { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/may.gif'); 
+       color: rgb(255, 255, 255);
+        }  
+.june { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/june.gif'); 
+        color: rgb(255, 255, 255);
+        }  
+.july { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/july.gif'); 
+        color: rgb(255, 255, 255);
+        }  
+.august { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/august.gif'); 
+        color: rgb(255, 255, 255);
+        }  
+.september { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/september.gif'); 
+             color: rgb(255, 255, 255);
+            }  
+.october { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/october.gif'); 
+           color: rgb(255, 255, 255);
+        }  
+.november { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/november.gif'); 
+            color: rgb(255, 255, 255);
+        }  
+.december { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/december.gif'); 
+            color: rgb(255, 255, 255);
+        }  
 
 
 .small-calendar {
@@ -50,7 +74,7 @@
 
 .calendar-day {
     padding: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     text-align: center;
     flex-grow: 1;
     overflow: hidden;
@@ -63,10 +87,12 @@
 }
 
 .past-day {
-    background-color: #8f5cdc;
+    background-color: #1c0243;
     color: rgb(177, 177, 177);
 }
 
 .future-day {
-    background-color: #fff;
+    background-color: rgba(55, 50, 50, 0.8); /* Adjust the alpha value as needed */
+    color: rgb(110, 108, 108);
 }
+

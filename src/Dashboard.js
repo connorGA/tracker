@@ -15,7 +15,7 @@ export const Dashboard = () => {
   return (
     <div>
       <Calendar />
-      <h2>Dashboard</h2>
+      
 
       {/* Add a Link styled as a button */}
       <Link to="/create" style={{ textDecoration: 'none' }}>
