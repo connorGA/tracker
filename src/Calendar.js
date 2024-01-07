@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { startOfYear, endOfYear, isSameDay, isBefore, isAfter, format } from 'date-fns';
 import './Calendar.css'; // Import your CSS file for styling
 
+
+
 export const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 

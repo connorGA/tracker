@@ -27,18 +27,18 @@
     background-size: cover;
 }
 
-.january { background-color: #4caf50; } /* Green for January */
-.february { background-color: #2196f3; } /* Blue for February */
-.march { background-color: #ff5722; } 
-.april { background-color: #ff5722; } 
-.may { background-color: #ff5722; } 
-.june { background-color: #ff5722; } 
-.july { background-color: #ff5722; } 
-.august { background-color: #ff5722; } 
-.september { background-color: #ff5722; } 
-.october { background-color: #ff5722; } 
-.november { background-color: #ff5722; } 
-.december { background-color: #ff5722; } 
+.january { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/jan.gif'); } /* Green for January */
+.february { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/Feb.gif'); } /* Blue for February */
+.march { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/march.gif'); } 
+.april { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/april.gif'); } 
+.may { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/may.gif'); }  
+.june { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/june.gif'); }  
+.july { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/july.gif'); }  
+.august { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/august.gif'); }  
+.september { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/september.gif'); }  
+.october { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/october.gif'); }  
+.november { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/november.gif'); }  
+.december { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/december.gif'); }  
 
 
 .small-calendar {
