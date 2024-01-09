@@ -49,7 +49,8 @@ export const Column = ({ itemData }) => {
   return (
     <div className="column-container">
       <h2 className='name'>{itemData ? `${itemData.itemName}` : ''}</h2>
-      <h5 className='goal'>{`Goal: ${goalHours} hrs`}</h5>
+      {/* <h5 className='goal'>{`Goal: ${goalHours} hrs`}</h5> */} 
+      {/* not supposed to be showing on column prior to input */}
       {daysInMonths.map((_, monthIndex) => (
         <div key={monthIndex} className="month-container">
           <span className="month-label">{new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}</span>
