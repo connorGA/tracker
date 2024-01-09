@@ -48,7 +48,7 @@ export const Column = ({ itemData }) => {
 
   return (
     <div className="column-container">
-      <h2>{itemData ? `${itemData.itemName}` : ''}</h2>
+      <h2 className='name'>{itemData ? `${itemData.itemName}` : ''}</h2>
       {daysInMonths.map((_, monthIndex) => (
         <div key={monthIndex} className="month-container">
           <span className="month-label">{new Date(currentYear, monthIndex).toLocaleString('default', { month: 'short' })}</span>
