@@ -26,6 +26,12 @@
     overflow: hidden;
     margin: 0px 0px;
     background-size: cover;
+    transition: all 0.3s ease;
+}
+
+.calendar-month:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .january { background-image: url('/Users/connorcappello/Desktop/tracker/tracker/public/jan.gif');
