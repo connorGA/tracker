@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './CreateForm.css';
 
 export const CreateForm = ({ onItemCreate }) => {
   const navigate = useNavigate();
 
   const [itemName, setItemName] = useState('');
   const [totalHours, setTotalHours] = useState(0);
+  const [yearlyGoal, setYearlyGoal] = useState(0);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -13,6 +15,8 @@ export const CreateForm = ({ onItemCreate }) => {
       setItemName(value);
     } else if (name === 'totalHours') {
       setTotalHours(value);
+    } else if (name === 'yearlyGoal') {
+      setYearlyGoal(value);
     }
   };
 
@@ -27,10 +31,10 @@ export const CreateForm = ({ onItemCreate }) => {
   };
 
   return (
-    <div>
-      <h2>Create Tracker Item</h2>
+    <div className='create-form-container'>
+      <h2 className='form-title'>Create Tracker Item</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className='create-label'>
           Item Name:
           <input
             type="text"
@@ -40,7 +44,7 @@ export const CreateForm = ({ onItemCreate }) => {
           />
         </label>
 
-        <label>
+        <label className='create-label'>
           Total Hours:
           <input
             type="number"
@@ -50,7 +54,17 @@ export const CreateForm = ({ onItemCreate }) => {
           />
         </label>
 
-        <button type="submit">Submit</button>
+        <label className='create-label'>
+          Yearly Goal (in hours):
+          <input
+            type="number"
+            name="yearlyGoal"
+            value={yearlyGoal}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <button className='submit-button' type="submit">Submit</button>
       </form>
     </div>
   );
