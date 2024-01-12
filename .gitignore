@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#Mongodb credentials----
+#       Username: cappelloconnor
+#       Password:62x0Cr3NQ2q3nfF7
+
+# mongodb+srv://cappelloconnor:62x0Cr3NQ2q3nfF7@cluster0.y8bxhvq.mongodb.net/?retryWrites=true&w=majority
+
+
 # dependencies
 /node_modules
 /.pnp
