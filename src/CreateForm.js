@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './CreateForm.css';
 
 export const CreateForm = ({ onItemCreate }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [itemName, setItemName] = useState('');
   const [totalHours, setTotalHours] = useState(0);
@@ -29,9 +30,16 @@ export const CreateForm = ({ onItemCreate }) => {
 
     navigate('/'); // Redirect to the dashboard after submission
   };
+  // Render the Home button only on the CreateForm page
+  const renderHomeButton = location.pathname === '/create' && (
+    <Link to="/" style={{ textDecoration: 'none' }}>
+      <button className='home-button'>Home</button>
+    </Link>
+  );
 
   return (
     <div className='create-form-container'>
+      {renderHomeButton}
       <h2 className='form-title'>Create Tracker Item</h2>
       <form onSubmit={handleSubmit}>
         <label className='create-label'>

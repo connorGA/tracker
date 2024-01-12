@@ -79,3 +79,16 @@
     }
   }
   
+
+  .home-button {
+    position: absolute;
+    left: 1%; /* Adjust the left value as needed for responsiveness */
+    z-index: 1; /* Make sure it's above other content if needed */
+
+
+  
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      left: 1%; /* Adjust for smaller screens */
+    }
+  }
