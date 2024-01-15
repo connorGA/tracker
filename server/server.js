@@ -3,6 +3,7 @@ require('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
+const trackerItemRoutes = require('./routes/trackerItemRoutes');
 
 const port = process.env.PORT || 5000;
 
@@ -20,6 +21,7 @@ app.get('/', (req,res) => {
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
+app.use('/api/trackerItems', trackerItemRoutes);
 
 
 app.listen(port, () => {
