@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');  // Changed from username to email
   const [password, setPassword] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'username') {
-      setUsername(value);
+    if (name === 'email') {  // Changed from username to email
+      setEmail(value);  // Changed from setUsername to setEmail
     } else if (name === 'password') {
       setPassword(value);
     }
@@ -17,7 +17,6 @@ export const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Replace with your backend API endpoint
     const loginApiUrl = 'http://localhost:5000/api/users/login'; 
 
     try {
@@ -26,14 +25,14 @@ export const LoginForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),  // Changed from username to email
       });
 
       if (!response.ok) {
         throw new Error('Login failed');
       }
 
-      // Here you would typically handle the response, store the user token, etc.
+      // Handle the response, store the user token, etc.
       navigate('/'); // Redirect to dashboard or another page on successful login
     } catch (error) {
       console.error('Login error:', error);
@@ -47,9 +46,9 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="username"
-          value={username}
-          placeholder="Username or Email"
+          name="email"  // Changed from username to email
+          value={email}  // Changed from username to email
+          placeholder="Email"  // Changed placeholder
           onChange={handleInputChange}
         />
         <input
