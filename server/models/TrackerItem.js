@@ -8,4 +8,6 @@ const trackerItemSchema = new mongoose.Schema({
   });
   
   const TrackerItem = mongoose.model('TrackerItem', trackerItemSchema);
+
+  module.exports = TrackerItem;
   
