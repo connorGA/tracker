@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
@@ -12,6 +13,9 @@ mongoose
 .connect(process.env.MONGO_URL)
 .then(() => console.log("DB connected"))
 .catch((err) => console.log("DB NOT connected"))
+
+//middleware
+app.use(cors());
 
 
 app.get('/', (req,res) => {
