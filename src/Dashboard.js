@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
 import { Calendar } from './Calendar';
 import { CreateForm } from './CreateForm';
@@ -7,8 +7,24 @@ import { TestComponent } from './TestComponent';
 import './Dashboard.css';
 
 export const Dashboard = () => {
-  const [itemData, setItemData] = useState(null);
-  const location = useLocation(); // Get the current location
+  const [itemData, setItemData] = useState([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/trackerItems');
+        if (!response.ok) throw new Error('Data fetch failed');
+
+        const data = await response.json();
+        setItemData(data);
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleItemCreate = (data) => {
     setItemData(data);

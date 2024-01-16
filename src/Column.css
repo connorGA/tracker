@@ -1,65 +1,68 @@
+
 .column-container {
-    display: flex;
-    width: 1; /* Adjust width to be less than 100% */
-    justify-content: space-between;
-    background-color: rgb(19, 21, 32); /* Dark background color */
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3), /* Top shadow */
-                0 5px 10px rgba(0, 0, 0, 0.3); /* Bottom shadow */
-    padding: 20px; /* Padding inside the container */
-    border-radius: 15px; /* Rounded corners */
-    margin: 20px 20px; /* Margin around the container */
-  }  
-  
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Hide the overflow */
+  height: 800px; /* Adjust based on how much you want to show at once */
+  align-items: center; /* Center items if needed */
+  position: relative; /* Needed if you're going to absolutely position navigation buttons */
+}
+
+
+.tracker-item-container {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Space between items */
+  width: 100%; /* Ensure items take full width of the container */
+}
+
+.tracker-item-info {
+  margin-bottom: 10px;
+}
+
+.tracker-item-progress-bar {
+  background-color: #ddd;
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.tracker-item-progress {
+  background-color: #4caf50;
+  height: 100%;
+}
+
+.tracker-item-calendar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columns for 12 months */
+  gap: 5px;
+}
+
 .month-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
-  margin-bottom: 20px;
 }
 
 .month-label {
-  margin-bottom: 10px;
-  color: #fff; /* Light color for text to contrast with the dark background */
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .week-container {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 5px;
+  display: none; /* Hide week container as it's no longer needed */
 }
 
-.day {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-  
-  .day-past {
-    background-color: darkgrey;
-  }
-  
-  .day-future {
-    background-color: darkgrey;
-  }
-  
-  .day-current-green {
-    background-color: green;
-  }
-  
-  .day-current-lightgreen {
-    background-color: lightgreen;
-  }
-  
-.name {
-    color: rgb(16, 239, 239);
-    margin-top: 3%;
-    margin-right: 1%;
+.day-bubble {
+  width: calc(100% / 31); /* Adjust width based on the maximum number of days in a month */
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 2px;
+  display: inline-block;
 }
 
-.goal {
-    color: aquamarine;
-    margin-top: 6%;
-    margin-left: -6%;
-    margin-right: 20px;
+.goal-met {
+  background-color: #4caf50;
 }
