@@ -1,63 +1,87 @@
 import React, { useState } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './CreateForm.css';
 
-export const CreateForm = ({ onItemCreate }) => {
+export const CreateForm = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const [itemName, setItemName] = useState('');
-  const [totalHours, setTotalHours] = useState(0);
-  const [yearlyGoal, setYearlyGoal] = useState(0);
+  const [name, setName] = useState('');
+  const [hoursCollected, setHoursCollected] = useState(0);
+  const [goalHours, setGoalHours] = useState(0);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'itemName') {
-      setItemName(value);
-    } else if (name === 'totalHours') {
-      setTotalHours(value);
-    } else if (name === 'yearlyGoal') {
-      setYearlyGoal(value);
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'hoursCollected':
+        setHoursCollected(value);
+        break;
+      case 'goalHours':
+        setGoalHours(value);
+        break;
+      default:
+        break;
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onItemCreate({
-      itemName: itemName,
-      times: Array(30).fill(0).map(() => parseFloat(totalHours)), // Example: creates an array of 30 days with the same hours logged
-    });
 
-    navigate('/'); // Redirect to the dashboard after submission
+    const trackerItemData = {
+      name,
+      hoursCollected: parseFloat(hoursCollected),
+      goalHours: parseFloat(goalHours),
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/trackerItems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Include authorization header if needed
+          // 'Authorization': `Bearer ${userToken}`,
+        },
+        body: JSON.stringify(trackerItemData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create tracker item');
+      }
+
+      const newItem = await response.json();
+      console.log('New item created:', newItem);
+      navigate('/'); // Redirect to the dashboard after submission
+    } catch (error) {
+      console.error('Error creating item:', error);
+      // Handle error (e.g., show error message)
+    }
   };
-  // Render the Home button only on the CreateForm page
-  const renderHomeButton = location.pathname === '/create' && (
-    <Link to="/" style={{ textDecoration: 'none' }}>
-      <button className='home-button'>Home</button>
-    </Link>
-  );
 
   return (
     <div className='create-form-container'>
-      {renderHomeButton}
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <button className='home-button'>Home</button>
+      </Link>
       <h2 className='form-title'>Create Tracker Item</h2>
       <form onSubmit={handleSubmit}>
         <label className='create-label'>
           Item Name:
           <input
             type="text"
-            name="itemName"
-            value={itemName}
+            name="name"
+            value={name}
             onChange={handleInputChange}
           />
         </label>
 
         <label className='create-label'>
-          Total Hours:
+          Total Hours Collected:
           <input
             type="number"
-            name="totalHours"
-            value={totalHours}
+            name="hoursCollected"
+            value={hoursCollected}
             onChange={handleInputChange}
           />
         </label>
@@ -65,15 +89,15 @@ export const CreateForm = ({ onItemCreate }) => {
         <label className='create-label'>
           Yearly Goal (in hours):
           <input
-            type="number"
-            name="yearlyGoal"
-            value={yearlyGoal}
-            onChange={handleInputChange}
-          />
-        </label>
+          type="number"
+          name="goalHours"
+          value={goalHours}
+          onChange={handleInputChange}
+       />
+      </label>
 
-        <button className='submit-button' type="submit">Submit</button>
-      </form>
-    </div>
-  );
+    <button className='submit-button' type="submit">Submit</button>
+  </form>
+</div>
+);
 };
