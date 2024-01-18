@@ -28,28 +28,30 @@ export const CreateForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const trackerItemData = {
       name,
       hoursCollected: parseFloat(hoursCollected),
       goalHours: parseFloat(goalHours),
     };
-
+  
+    // Retrieve the token from local storage or your state management solution
+    const token = localStorage.getItem('token');
+  
     try {
       const response = await fetch('http://localhost:5000/api/trackerItems', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Include authorization header if needed
-          // 'Authorization': `Bearer ${userToken}`,
+          'Authorization': `Bearer ${token}`, // Include the authorization header
         },
         body: JSON.stringify(trackerItemData),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to create tracker item');
       }
-
+  
       const newItem = await response.json();
       console.log('New item created:', newItem);
       navigate('/'); // Redirect to the dashboard after submission
@@ -58,6 +60,7 @@ export const CreateForm = () => {
       // Handle error (e.g., show error message)
     }
   };
+  
 
   return (
     <div className='create-form-container'>

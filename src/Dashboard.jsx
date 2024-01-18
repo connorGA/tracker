@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Calendar } from './Calendar';
 import { CreateForm } from './CreateForm';
 import { Column } from './Column';
@@ -10,14 +10,28 @@ export const Dashboard = () => {
   const [itemData, setItemData] = useState([]);
   const location = useLocation();
 
+  // Function to parse tracker item data
+  const parseTrackerItem = (item) => {
+    return {
+      id: item._id.$oid,
+      name: item.name,
+      hoursCollected: parseInt(item.hoursCollected.$numberInt, 10),
+      goalHours: parseInt(item.goalHours.$numberInt, 10),
+      // Add any other fields you need here
+    };
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/trackerItems');
-        if (!response.ok) throw new Error('Data fetch failed');
+      const token = localStorage.getItem('userToken');
+      const headers = { 'Authorization': `Bearer ${token}` };
 
-        const data = await response.json();
-        setItemData(data);
+      try {
+        const response = await fetch('http://localhost:5000/api/trackerItems', { headers });
+        if (!response.ok) throw new Error('Data fetch failed');
+        const rawData = await response.json();
+        const parsedData = rawData.map(item => parseTrackerItem(item));
+        setItemData(parsedData);
       } catch (error) {
         console.error('Fetch error:', error);
       }
@@ -26,11 +40,11 @@ export const Dashboard = () => {
     fetchData();
   }, []);
 
-  const handleItemCreate = (data) => {
-    setItemData(data);
+  const handleItemCreate = (newItemData) => {
+    const parsedItem = parseTrackerItem(newItemData);
+    setItemData([...itemData, parsedItem]);
   };
 
-  // Conditionally render the Create New Item button only on the home page
   const renderCreateButton = location.pathname === '/' && (
     <Link to="/create" style={{ textDecoration: 'none' }}>
       <button className='create-button'>Create New Item</button>

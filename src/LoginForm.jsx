@@ -33,6 +33,10 @@ export const LoginForm = () => {
       }
 
       // Handle the response, store the user token, etc.
+      const data = await response.json();
+      localStorage.setItem('userToken', data.token); // Assuming the token is in the response
+
+
       navigate('/'); // Redirect to dashboard or another page on successful login
     } catch (error) {
       console.error('Login error:', error);
