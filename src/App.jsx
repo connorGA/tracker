@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Dashboard } from './Dashboard';
 import { LoginForm } from './LoginForm';
 import { RegistrationForm } from './RegistrationForm';
+import { CreateForm } from './CreateForm';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       } />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/register" element={<RegistrationForm />} />
+      <Route path="/create" element={<CreateForm />} />
     </Routes>
   );
 }

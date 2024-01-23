@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../middleware/authenticateToken');
 const {
     createTrackerItem,
     getAllTrackerItems,
@@ -11,18 +12,18 @@ const {
 } = require('../controllers/trackerItemController'); 
 
 // Route to create a new tracker item
-router.post('/', createTrackerItem);
+router.post('/', authenticateToken, createTrackerItem);
 
 // Route to retrieve all tracker items
-router.get('/', getAllTrackerItems);
+router.get('/', authenticateToken, getAllTrackerItems);
 
 // Route to retrieve a single tracker item by ID
-router.get('/:id', getTrackerItem);
+router.get('/:id', authenticateToken, getTrackerItem);
 
 // Route to update a tracker item by ID
-router.put('/:id', updateTrackerItem);
+router.put('/:id', authenticateToken, updateTrackerItem);
 
 // Route to delete a tracker item by ID
-router.delete('/:id', deleteTrackerItem);
+router.delete('/:id', authenticateToken, deleteTrackerItem);
 
 module.exports = router;
