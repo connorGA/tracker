@@ -24,7 +24,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     // Fetch user name from local storage
-    const storedUserName = localStorage.getItem('username');
+    const storedUserName = localStorage.getItem('userName');
     console.log("Retrieved userName:", storedUserName);
 
     if (storedUserName) {

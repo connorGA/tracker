@@ -37,7 +37,7 @@ export const LoginForm = () => {
       console.log("Received data on login:", data);
 
       localStorage.setItem('userToken', data.token); // Assuming the token is in the response
-      localStorage.setItem('userName', data.username);
+      localStorage.setItem('userName', data.name);
 
 
       navigate('/'); // Redirect to dashboard or another page on successful login
