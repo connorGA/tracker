@@ -34,7 +34,10 @@ export const LoginForm = () => {
 
       // Handle the response, store the user token, etc.
       const data = await response.json();
+      console.log("Received data on login:", data);
+
       localStorage.setItem('userToken', data.token); // Assuming the token is in the response
+      localStorage.setItem('userName', data.username);
 
 
       navigate('/'); // Redirect to dashboard or another page on successful login
@@ -67,3 +70,4 @@ export const LoginForm = () => {
     </div>
   );
 };
+ 

@@ -8,6 +8,7 @@ import './Dashboard.css';
 
 export const Dashboard = () => {
   const [itemData, setItemData] = useState([]);
+  const [userName, setUserName] = useState(''); // State to hold the user's name
   const location = useLocation();
 
   // Function to parse tracker item data
@@ -22,6 +23,14 @@ export const Dashboard = () => {
   };
 
   useEffect(() => {
+    // Fetch user name from local storage
+    const storedUserName = localStorage.getItem('username');
+    console.log("Retrieved userName:", storedUserName);
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
     const fetchData = async () => {
       const token = localStorage.getItem('userToken');
       const headers = { 'Authorization': `Bearer ${token}` };
@@ -54,6 +63,8 @@ export const Dashboard = () => {
   return (
     <div className='dashboard'>
       <Calendar />
+
+      <h1>Welcome, {userName}</h1>
 
       {renderCreateButton}
 

@@ -34,6 +34,7 @@ exports.loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
+        console.log("Fetched user:", user); // Debug log
 
         if (!user || !await bcrypt.compare(password, user.password)) {
             return res.status(400).json({ message: 'Invalid credentials' });
@@ -41,12 +42,13 @@ exports.loginUser = async (req, res) => {
 
         // Create a token
         const token = jwt.sign(
-            { userId: user._id, email: user.email },
+            { userId: user._id, email: user.email, name: user.username }, //maybe Add tracketItem here if name passed correctly
             JWT_SECRET,
             { expiresIn: '1h' } // Token expires in 1 hour
         );
 
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful', token, name: user.username });
+        console.log("Login response:", { token, name: user.username });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
