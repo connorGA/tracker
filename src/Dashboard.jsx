@@ -64,7 +64,7 @@ export const Dashboard = () => {
     <div className='dashboard'>
       <Calendar />
 
-      <h1>Welcome, {userName}</h1>
+      <h1 className='username'> {userName}'s 2024</h1>
 
       {renderCreateButton}
 

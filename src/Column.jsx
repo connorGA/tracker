@@ -48,7 +48,7 @@ export const Column = ({ itemData }) => {
         <div key={trackerIndex} className="tracker-item-container">
           <div className="tracker-item-info">
             <h3 className="tracker-item-name">{trackerItem.name}</h3>
-            <div>Goal Hours per Day: {trackerItem.goalHours}</div>
+            <div>Daily Goal: {trackerItem.goalHours}</div>
           </div>
           <div className="tracker-item-progress-bar">
             <div 

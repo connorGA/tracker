@@ -24,3 +24,8 @@
      background: linear-gradient(0deg, rgb(17, 190, 233) 0%, rgba(12,25,180,1) 100%);
   
   }
+
+  .username {
+    color: rgb(153, 234, 234);
+    margin-left: .5em;
+  }
