@@ -33,14 +33,17 @@ export const RegistrationForm = () => {
       });
 
       if (!response.ok) {
+        const errorBody = await response.json();
+        console.error('Registration failed:', response.status, errorBody);
         throw new Error('Registration failed');
       }
 
       // Handle successful registration (e.g., redirect to login or auto-login)
       navigate('/login'); // Redirect to login page after registration
+      
     } catch (error) {
-      console.error('Registration error:', error);
-      // Handle registration error (e.g.,show error message)
+      const errorMessage = await error.response.json();
+      console.error('Registration error:', errorMessage);
             }
         }
     return (

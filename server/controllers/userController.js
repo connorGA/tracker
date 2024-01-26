@@ -2,11 +2,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); 
 
-// You'll need a secret key for JWT signing
+// secret key for JWT signing
 const JWT_SECRET = process.env.JWT_SECRET
 
 // Register ------
 exports.registerUser = async (req, res) => {
+    console.log('Register endpoint hit', req.body);
     try {
         const { username, email, password } = req.body;
 
@@ -25,6 +26,9 @@ exports.registerUser = async (req, res) => {
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
+        if (error.code === 11000 && error.keyPattern.email) {
+            return res.status(400).json({ message: 'Email already in use' });
+        }
         res.status(500).json({ message: error.message });
     }
 };
